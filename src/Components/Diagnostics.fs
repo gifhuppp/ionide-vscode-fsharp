@@ -115,7 +115,10 @@ Error: %A
                 |> Option.defaultWith (fun () ->
                     workspace.workspaceFolders
                     |> Option.bind (fun folders ->
-                        if folders.Count > 0 then Some(string folders.[0].uri.fsPath) else None)
+                        if folders.Count > 0 then
+                            Some(string folders.[0].uri.fsPath)
+                        else
+                            None)
                     |> Option.defaultValue (node.os.tmpdir ()))
 
             let path = node.path.join (workspaceRoot, "Diagnostic info")
